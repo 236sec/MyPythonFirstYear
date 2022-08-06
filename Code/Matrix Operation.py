@@ -83,3 +83,26 @@ def power_matrix(A,c):
   for i in range(c-1):
     A = mul_matrix(A,tmp)
   return A
+
+def find_det_2x2(A):
+  '''return det of 2x2 matrix'''
+  return (A[0][0]*A[1][1]) - (A[0][1]*A[1][0])
+
+def find_det_3x3(A):
+  '''return det of 3x3 matrix'''
+  pl = A[0][0]*A[1][1]*A[2][2] + A[0][1]*A[1][2]*A[2][0] + A[0][2]*A[1][0]*A[2][1]
+  do = A[2][0]*A[1][1]*A[0][2] + A[2][1]*A[1][2]*A[0][0] + A[2][2]*A[1][0]*A[0][1]
+  return pl - do
+
+def get_matrix(row,column):
+  '''get values from input and return it in matrix'''
+  re = []
+  for ro in range(row):
+    row_list = [int(i) for i in input(f'Row {ro+1} : ').split()]
+    '''check that is correct collumn'''
+    if len(row_list)!=column:
+      print('Error')
+      break
+    re.append(row_list)
+  return re
+
